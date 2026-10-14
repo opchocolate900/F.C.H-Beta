@@ -3,714 +3,87 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#080812">
-<meta name="description" content="قلمرو دیجیتالی فرمانده شکلات؛ شبکه‌های اجتماعی و پروژه‌ها">
-<title>فرمانده شکلات | Chocolate</title>
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🍫%3C/text%3E%3C/svg%3E">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;600;800;900&display=swap" rel="stylesheet">
-
+<title>سایت خاموش است</title>
 <style>
-:root {
-  --bg: #080812;
-  --pink: #ff3d9a;
-  --cyan: #36eaff;
-  --purple: #9c5cff;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Vazirmatn', Tahoma, sans-serif;
-  background: var(--bg);
-  color: white;
-  overflow-x: hidden;
-}
-
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  z-index: -2;
-  background:
-    radial-gradient(ellipse at 20% 20%, #5e197b55, transparent 40%),
-    radial-gradient(ellipse at 80% 60%, #073e6555, transparent 40%),
-    #080812;
-  transform: translate(calc(var(--mx, 0) * -25px), calc(var(--my, 0) * -25px)) scale(1.12);
-}
-
-#particles {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  pointer-events: none;
-}
-
-a:focus-visible {
-  outline: 2px solid var(--cyan);
-  outline-offset: 4px;
-  border-radius: 6px;
-}
-
-nav {
-  position: fixed;
-  top: 15px;
-  left: 5%;
-  right: 5%;
-  z-index: 10;
-  padding: 14px 22px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  flex-wrap: wrap;
-  background: #10101dcc;
-  border: 1px solid #ffffff20;
-  border-radius: 18px;
-  -webkit-backdrop-filter: blur(18px);
-  backdrop-filter: blur(18px);
-}
-
-.brand {
-  color: var(--cyan);
-  font-weight: 900;
-  font-size: 18px;
-  text-shadow: 0 0 15px var(--cyan);
-}
-
-nav a {
-  color: #ddd;
-  text-decoration: none;
-  font-size: 13px;
-  transition: .3s;
-}
-
-nav a:hover {
-  color: var(--pink);
-}
-
-.hero {
-  min-height: 100vh;
-  min-height: 100svh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 130px 20px 65px;
-}
-
-.hero-content {
-  max-width: 850px;
-}
-
-.orb {
-  width: 150px;
-  height: 150px;
-  margin: 0 auto 32px;
-  border-radius: 42%;
-  display: grid;
-  place-items: center;
-  font-size: 72px;
-  background: linear-gradient(135deg, #ff3d9a, #713cff, #25dfff);
-  box-shadow:
-    0 0 35px #ff3d9a88,
-    0 0 90px #713cff66,
-    inset 0 0 25px #ffffff55;
-  translate: calc(var(--mx, 0) * 28px) calc(var(--my, 0) * 22px);
-  animation: float 4s ease-in-out infinite,
-             rotate 12s linear infinite;
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-17px); }
-}
-
-@keyframes rotate {
-  to { filter: hue-rotate(360deg); }
-}
-
-h1 {
-  font-size: clamp(34px, 7vw, 70px);
-  font-weight: 900;
-  line-height: 1.4;
-  background: linear-gradient(90deg, #fff, var(--pink), var(--cyan));
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  color: transparent;
-  filter: drop-shadow(0 0 20px #a23aff44);
-  translate: calc(var(--mx, 0) * 12px) calc(var(--my, 0) * 9px);
-}
-
-.tag, .subtitle, .buttons {
-  translate: calc(var(--mx, 0) * 6px) calc(var(--my, 0) * 5px);
-}
-
-.subtitle {
-  margin: 20px 0;
-  color: #c9c9d8;
-  line-height: 2.1;
-  font-size: 16px;
-}
-
-.tag {
-  display: inline-block;
-  border: 1px solid #ffffff28;
-  padding: 8px 17px;
-  border-radius: 30px;
-  background: #ffffff08;
-  color: var(--cyan);
-  font-size: 13px;
-  margin-bottom: 22px;
-}
-
-.buttons {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 14px;
-  margin-top: 28px;
-}
-
-.btn {
-  padding: 13px 23px;
-  border-radius: 13px;
-  color: white;
-  text-decoration: none;
-  border: 1px solid #ffffff25;
-  background: #ffffff0c;
-  transition: .3s;
-}
-
-.btn.primary {
-  background: linear-gradient(100deg, #a42bff, #ff329b);
-  border: none;
-  box-shadow: 0 0 25px #b02cff44;
-}
-
-.btn:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 25px #36eaff55;
-}
-
-section {
-  padding: 85px 7%;
-  scroll-margin-top: 90px;
-}
-
-.section-title {
-  text-align: center;
-  font-size: clamp(25px, 4vw, 40px);
-  margin-bottom: 15px;
-}
-
-.section-desc {
-  text-align: center;
-  color: #aaaabc;
-  margin-bottom: 40px;
-  line-height: 2;
-}
-
-.cards {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 22px;
-  max-width: 1100px;
-  margin: auto;
-}
-
-.card {
-  position: relative;
-  overflow: hidden;
-  padding: 28px 23px;
-  min-height: 220px;
-  background: linear-gradient(145deg, #ffffff12, #ffffff04);
-  border: 1px solid #ffffff20;
-  border-radius: 23px;
-  -webkit-backdrop-filter: blur(12px);
-  backdrop-filter: blur(12px);
-  transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));
-  transition: transform .2s ease-out, border-color .35s, box-shadow .35s;
-  will-change: transform;
-}
-
-/* معلق بودن کارت‌ها (بعد از ظاهر شدن) */
-.js .card.show {
-  animation: bob 6s ease-in-out infinite;
-  animation-delay: var(--d, 0s);
-}
-
-@keyframes bob {
-  0%, 100% { translate: 0 0; }
-  50% { translate: 0 -9px; }
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  width: 140px;
-  height: 140px;
-  top: -90px;
-  left: -70px;
-  background: var(--pink);
-  filter: blur(75px);
-  opacity: .4;
-  pointer-events: none;
-}
-
-.card:hover {
-  transform: perspective(800px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)) scale(1.03);
-  border-color: #36eaff88;
-  box-shadow: 0 15px 40px #0005, 0 0 22px #36eaff18;
-}
-
-.card-icon {
-  font-size: 38px;
-  margin-bottom: 18px;
-}
-
-.card h3 {
-  font-size: 19px;
-  margin-bottom: 12px;
-}
-
-.card p {
-  color: #b9b9ca;
-  line-height: 2;
-  font-size: 14px;
-}
-
-.card a {
-  display: inline-block;
-  margin-top: 17px;
-  color: var(--cyan);
-  text-decoration: none;
-  font-size: 14px;
-}
-
-.status {
-  display: inline-block;
-  color: #ff6f98;
-  border: 1px solid #ff4f8155;
-  border-radius: 20px;
-  padding: 5px 13px;
-  font-size: 12px;
-  margin-top: 18px;
-}
-
-.about {
-  max-width: 850px;
-  margin: auto;
-  padding: 35px;
-  border-radius: 25px;
-  border: 1px solid #ffffff20;
-  background: #ffffff08;
-  text-align: center;
-  line-height: 2.5;
-  color: #d4d4e3;
-}
-
-.about strong {
-  color: var(--pink);
-}
-
-footer {
-  text-align: center;
-  padding: 35px 15px;
-  border-top: 1px solid #ffffff15;
-  color: #9696a8;
-  line-height: 2.5;
-  font-size: 13px;
-}
-
-footer span {
-  color: var(--pink);
-}
-
-footer a {
-  color: var(--cyan);
-  text-decoration: none;
-}
-
-/* نمایش تدریجی فقط وقتی جاوااسکریپت فعال است */
-.js .reveal {
-  opacity: 0;
-  translate: 0 25px;
-  transition: opacity .7s, translate .7s;
-}
-
-.js .reveal.show {
-  opacity: 1;
-  translate: 0 0;
-}
-
-.js .card.reveal {
-  transition: opacity .7s, translate .7s, transform .2s ease-out, border-color .35s, box-shadow .35s;
-}
-
-@media (max-width: 600px) {
-  nav {
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    gap: 13px;
-  }
-
-  .brand {
-    width: 100%;
+    background: #14161c;
+    color: #f2f2f2;
+    font-family: Tahoma, "Segoe UI", sans-serif;
     text-align: center;
+    padding: 20px;
+    box-sizing: border-box;
   }
-
-  .hero {
-    padding-top: 165px;
+  .line {
+    font-size: 1.6rem;
+    line-height: 2.4rem;
+    min-height: 2.4rem;
   }
-
-  .orb {
-    width: 120px;
-    height: 120px;
-    font-size: 58px;
+  #cursor {
+    display: inline-block;
+    width: 2px;
+    height: 1.6rem;
+    background: #f2f2f2;
+    margin-right: 4px;
+    vertical-align: middle;
+    animation: blink 0.8s infinite;
   }
-
-  section {
-    padding: 65px 5%;
+  @keyframes blink { 50% { opacity: 0; } }
+  button {
+    margin-top: 32px;
+    padding: 12px 34px;
+    font-size: 1.1rem;
+    font-family: inherit;
+    color: #fff;
+    background: #e63946;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s, transform 0.2s;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-    scroll-behavior: auto !important;
+  button.show { opacity: 1; pointer-events: auto; }
+  button:hover { transform: scale(1.05); }
+  button:focus-visible { outline: 3px solid #fff; outline-offset: 3px; }
+  @media (prefers-reduced-motion: reduce) {
+    #cursor { animation: none; }
+    button { transition: none; }
   }
-
-  .js .reveal {
-    opacity: 1;
-    translate: none;
-  }
-}
 </style>
-<script>document.documentElement.classList.add("js");</script>
 </head>
-
 <body>
-<canvas id="particles" aria-hidden="true"></canvas>
-
-<nav aria-label="منوی اصلی">
-  <div class="brand"><span aria-hidden="true">🍫</span> فرمانده شکلات</div>
-  <a href="#home">خانه</a>
-  <a href="#about">درباره من</a>
-  <a href="#social">شبکه‌ها</a>
-  <a href="#projects">پروژه‌ها</a>
-</nav>
-
-<header class="hero" id="home">
-  <div class="hero-content">
-    <div class="tag">✦ به دنیای من خوش آمدی ✦</div>
-
-    <div class="orb" aria-hidden="true">🍫</div>
-
-    <h1>فرمانده شکلات</h1>
-
-    <p class="subtitle">
-      شاید الانی که می‌بینی شکلات نباشم،<br>
-      ولی وقتی می‌نویسم هستم! ⚡
-    </p>
-
-    <div class="buttons">
-      <a class="btn primary" href="#social">🚀 شبکه‌های من</a>
-      <a class="btn" href="#projects">❄️ پروژه‌ها</a>
-    </div>
-  </div>
-</header>
-
-<main>
-<section id="about">
-  <h2 class="section-title reveal">👑 درباره فرمانده</h2>
-  <p class="section-desc reveal">
-    اینجا قلمرو دیجیتالی فرمانده شکلات است!
-  </p>
-
-  <div class="about reveal">
-    <p>
-      سلام به قلمرو من خوش اومدی! 🍫
-    </p>
-    <p>
-      اینجا دنیای <strong>فرمانده شکلات</strong>،
-      بازی‌ها، ایده‌ها و پروژه‌های خاص منه.
-    </p>
-    <p>
-      ❄️ از دنیای آیس‌لند تا ماجراجویی‌های ماینکرفت،
-      هر پروژه یه داستان جدا داره.
-    </p>
-  </div>
-</section>
-
-<section id="social">
-  <h2 class="section-title reveal">🌐 شبکه‌های اجتماعی</h2>
-  <p class="section-desc reveal">
-    از اینجا می‌تونی وارد صفحه‌های من بشی.
-  </p>
-
-  <div class="cards">
-
-    <article class="card reveal">
-      <div class="card-icon" aria-hidden="true">💬</div>
-      <h3>بله</h3>
-      <p>کانال رسمی فرمانده شکلات در بله.</p>
-      <a href="https://ble.ir/Chocolate126"
-         target="_blank" rel="noopener noreferrer">
-        ورود به بله ←
-      </a>
-    </article>
-
-    <article class="card reveal">
-      <div class="card-icon" aria-hidden="true">✈️</div>
-      <h3>تلگرام</h3>
-      <p>کانال تلگرام فرمانده شکلات.</p>
-      <a href="https://t.me/Chocolate_6783"
-         target="_blank" rel="noopener noreferrer">
-        ورود به تلگرام ←
-      </a>
-    </article>
-
-    <article class="card reveal">
-      <div class="card-icon" aria-hidden="true">▶️</div>
-      <h3>یوتیوب</h3>
-      <p>ویدیوها و محتوای کانال من.</p>
-      <a href="https://www.youtube.com/@chocolate-g7u5w"
-         target="_blank" rel="noopener noreferrer">
-        تماشای کانال ←
-      </a>
-    </article>
-
-    <article class="card reveal">
-      <div class="card-icon" aria-hidden="true">🤖</div>
-      <h3>TeamBOT</h3>
-      <p>پروژه ربات من در بله.</p>
-      <a href="https://ble.ir/Shokol_TeamBOT"
-         target="_blank" rel="noopener noreferrer">
-        مشاهده ربات ←
-      </a>
-    </article>
-
-  </div>
-</section>
-
-<section id="projects">
-  <h2 class="section-title reveal">🎮 پروژه‌های من</h2>
-  <p class="section-desc reveal">
-    پروژه‌های فعلی و آینده فرمانده شکلات
-  </p>
-
-  <div class="cards">
-
-    <article class="card reveal">
-      <div class="card-icon" aria-hidden="true">❄️</div>
-      <h3>Ice Land</h3>
-      <p>
-        دنیای یخی و پروژه‌های ماینکرفتی؛
-        منتظر اتفاقات جدید باش!
-      </p>
-      <span class="status">به‌زودی</span>
-    </article>
-
-    <article class="card reveal">
-      <div class="card-icon" aria-hidden="true">⛏️</div>
-      <h3>Minecraft</h3>
-      <p>
-        سرورها، ماجراجویی‌ها و ایده‌های
-        متفاوت در دنیای ماینکرفت.
-      </p>
-      <span class="status">در حال توسعه</span>
-    </article>
-
-    <article class="card reveal">
-      <div class="card-icon" aria-hidden="true">🌌</div>
-      <h3>ChocGlacore</h3>
-      <p>
-        ایده‌ای برای ترکیب دنیای شکلات،
-        یخ و فناوری.
-      </p>
-      <span class="status">به‌زودی</span>
-    </article>
-
-  </div>
-</section>
-</main>
-
-<footer>
-  <p>ساخته‌شده برای <span>فرمانده شکلات 🍫</span></p>
-  <p>© <span id="year">2026</span> Chocolate | تمام حقوق محفوظ است.</p>
-  <a href="#home">بازگشت به بالا ↑</a>
-</footer>
+  <div class="line"><span id="text"></span><span id="cursor"></span></div>
+  <button id="retry">تلاش مجدد</button>
 
 <script>
-(function () {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const message = "سایت فعلاً خاموش است، لطفاً بعداً تلاش کنید";
+  const textEl = document.getElementById("text");
+  const btn = document.getElementById("retry");
+  let timer = null;
 
-  // ستاره‌ها و ذرات نورانی
-  const canvas = document.getElementById("particles");
-  const ctx = canvas.getContext("2d");
-  let particles = [];
-  let animationFrame = null;
-  let lastWidth = 0;
-
-  // موقعیت موس (از -1 تا 1) با حرکت نرم
-  const mouse = { x: 0, y: 0, tx: 0, ty: 0 };
-  const root = document.documentElement;
-
-  window.addEventListener("pointermove", function (e) {
-    mouse.tx = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.ty = (e.clientY / window.innerHeight) * 2 - 1;
-  }, { passive: true });
-
-  document.addEventListener("pointerleave", function () {
-    mouse.tx = 0;
-    mouse.ty = 0;
-  });
-
-  function updateMouse() {
-    mouse.x += (mouse.tx - mouse.x) * 0.06;
-    mouse.y += (mouse.ty - mouse.y) * 0.06;
-    root.style.setProperty("--mx", mouse.x.toFixed(4));
-    root.style.setProperty("--my", mouse.y.toFixed(4));
-  }
-
-  function setupCanvas() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    canvas.width = window.innerWidth * dpr;
-    canvas.height = window.innerHeight * dpr;
-    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  }
-
-  function createParticles() {
-    const count = Math.min(65, Math.floor(window.innerWidth / 12));
-    particles = Array.from({ length: count }, () => ({
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      r: Math.random() * 2 + 0.5,
-      speed: Math.random() * 0.35 + 0.1,
-      hue: Math.random() > 0.5 ? 190 : 320
-    }));
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-    if (!reduceMotion) updateMouse();
-
-    for (const p of particles) {
-      if (!reduceMotion) p.y -= p.speed;
-
-      if (p.y < -5) {
-        p.y = window.innerHeight + 5;
-        p.x = Math.random() * window.innerWidth;
+  function typeText() {
+    clearInterval(timer);
+    textEl.textContent = "";
+    btn.classList.remove("show");
+    let i = 0;
+    timer = setInterval(() => {
+      textEl.textContent += message[i];
+      i++;
+      if (i >= message.length) {
+        clearInterval(timer);
+        btn.classList.add("show");
       }
-
-      ctx.beginPath();
-      // ذره‌های بزرگ‌تر نزدیک‌ترن و بیشتر تکون می‌خورن
-      const depth = p.r * 14;
-      ctx.arc(p.x - mouse.x * depth, p.y - mouse.y * depth, p.r, 0, Math.PI * 2);
-      ctx.fillStyle = "hsla(" + p.hue + ",100%,70%,0.75)";
-      ctx.shadowBlur = 12;
-      ctx.shadowColor = "hsl(" + p.hue + ",100%,65%)";
-      ctx.fill();
-    }
-
-    ctx.shadowBlur = 0;
-    if (!reduceMotion) animationFrame = requestAnimationFrame(draw);
+    }, 80);
   }
 
-  function start() {
-    if (reduceMotion) {
-      draw(); // فقط یک فریم ثابت
-      return;
-    }
-    if (animationFrame === null) animationFrame = requestAnimationFrame(draw);
-  }
-
-  function stop() {
-    if (animationFrame !== null) {
-      cancelAnimationFrame(animationFrame);
-      animationFrame = null;
-    }
-  }
-
-  setupCanvas();
-  createParticles();
-  lastWidth = window.innerWidth;
-  start();
-
-  // فقط وقتی عرض عوض شد ذرات دوباره ساخته می‌شن
-  // (تا با بالا و پایین رفتن نوار آدرس موبایل، پرش نداشته باشیم)
-  window.addEventListener("resize", function () {
-    setupCanvas();
-    if (window.innerWidth !== lastWidth) {
-      lastWidth = window.innerWidth;
-      createParticles();
-    }
-    if (reduceMotion) draw();
-  });
-
-  // وقتی تب دیده نمی‌شه، انیمیشن متوقف می‌شه
-  document.addEventListener("visibilitychange", function () {
-    if (document.hidden) stop();
-    else if (!reduceMotion) start();
-  });
-
-  // نمایش تدریجی بخش‌ها هنگام اسکرول
-  const items = document.querySelectorAll(".reveal");
-
-  if ("IntersectionObserver" in window && !reduceMotion) {
-    const observer = new IntersectionObserver(function (entries) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("show");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.12 });
-
-    items.forEach(function (el) { observer.observe(el); });
-  } else {
-    items.forEach(function (el) { el.classList.add("show"); });
-  }
-
-  // تأخیر متفاوت برای هر کارت تا همه با هم بالا و پایین نرن
-  document.querySelectorAll(".card").forEach(function (card, i) {
-    card.style.setProperty("--d", (-(i % 5) * 1.1) + "s");
-
-    if (reduceMotion) return;
-
-    // کج شدن کارت به سمت موس
-    card.addEventListener("pointermove", function (e) {
-      const r = card.getBoundingClientRect();
-      const px = (e.clientX - r.left) / r.width - 0.5;
-      const py = (e.clientY - r.top) / r.height - 0.5;
-      card.style.setProperty("--ry", (px * -14).toFixed(2) + "deg");
-      card.style.setProperty("--rx", (py * 14).toFixed(2) + "deg");
-    });
-
-    card.addEventListener("pointerleave", function () {
-      card.style.setProperty("--rx", "0deg");
-      card.style.setProperty("--ry", "0deg");
-    });
-  });
-
-  // سال جاری
-  document.getElementById("year").textContent = new Date().getFullYear();
-})();
+  btn.addEventListener("click", typeText);
+  typeText();
 </script>
 </body>
 </html>
