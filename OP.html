@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#061316">
+<meta name="description" content="ICECRAFT SURVIVAL | منتظر قهرمان نباش، خودت افسانه شو!">
+<title>ICECRAFT | SURVIVAL</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;700;800;900&display=swap');
+
+:root {
+  --bg: #061316;
+  --panel: #0c2227;
+  --ice: #9cf6ff;
+  --blue: #35dbe8;
+  --green: #6cffb0;
+  --white: #efffff;
+  --muted: #a4c5c9;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Vazirmatn, Tahoma, sans-serif;
+  background:
+    radial-gradient(ellipse at top, #16434a 0%, transparent 48%),
+    var(--bg);
+  color: var(--white);
+  line-height: 1.9;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: 92%;
+  max-width: 1100px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 0;
+  gap: 15px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 900;
+  direction: ltr;
+  font-size: 19px;
+}
+
+.logo-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  font-size: 27px;
+  border: 1px solid var(--blue);
+  border-radius: 14px;
+  background: #102b30;
+  box-shadow: 0 0 25px #35dbe822;
+}
+
+.logo small {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 3px;
+}
+
+nav {
+  display: flex;
+  gap: 20px;
+  font-size: 13px;
+  color: var(--muted);
+}
+
+nav a:hover {
+  color: var(--green);
+}
+
+.hero {
+  min-height: 520px;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 30px;
+  align-items: center;
+  padding: 40px 0;
+}
+
+.label {
+  display: inline-block;
+  color: var(--green);
+  border: 1px solid #6cffb044;
+  background: #0c292d;
+  border-radius: 30px;
+  padding: 5px 14px;
+  font-size: 12px;
+}
+
+h1 {
+  direction: ltr;
+  text-align: right;
+  font-size: clamp(42px, 7vw, 78px);
+  line-height: 1.3;
+  margin: 15px 0;
+  letter-spacing: -2px;
+}
+
+h1 span {
+  display: block;
+  color: var(--ice);
+  text-shadow: 0 0 30px #35dbe844;
+}
+
+.description {
+  color: #bfd8dc;
+  font-size: 14px;
+  max-width: 520px;
+}
+
+.slogan {
+  color: var(--green);
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 20px;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 19px;
+  border-radius: 12px;
+  font-size: 13px;
+  font-weight: 800;
+  transition: .25s;
+  border: 1px solid #8ff6ff44;
+}
+
+.btn:hover {
+  transform: translateY(-3px);
+}
+
+.btn-primary {
+  background: linear-gradient(120deg, #a6fbff, #48dfe7);
+  color: #062126;
+  border: none;
+}
+
+.btn-secondary {
+  background: #102a30;
+}
+
+.art {
+  min-height: 330px;
+  display: grid;
+  place-items: center;
+  position: relative;
+}
+
+.ice-orb {
+  width: min(300px, 75vw);
+  aspect-ratio: 1;
+  border-radius: 35%;
+  transform: rotate(-8deg);
+  display: grid;
+  place-items: center;
+  border: 1px solid #9cf6ff88;
+  background: radial-gradient(circle at 30% 25%,
+    #e0ffff 0%, #65dce8 10%, #1b7783 30%,
+    #0c343c 58%, #07191d 78%);
+  box-shadow: inset -20px -20px 45px #020d10,
+              0 0 75px #35dbe82b;
+  position: relative;
+}
+
+.ice-orb::before {
+  content: "";
+  position: absolute;
+  inset: 20px;
+  border: 1px solid #c9ffff66;
+  border-radius: inherit;
+  transform: rotate(25deg);
+}
+
+.ice-cube {
+  font-size: 100px;
+  transform: rotate(8deg);
+  filter: drop-shadow(0 10px 20px #001114);
+}
+
+.floating {
+  position: absolute;
+  padding: 8px 12px;
+  border: 1px solid #8ff6ff44;
+  border-radius: 12px;
+  background: #092126ee;
+  color: var(--ice);
+  font-size: 12px;
+}
+
+.floating.top {
+  top: 20px;
+  right: 0;
+}
+
+.floating.bottom {
+  bottom: 25px;
+  left: 0;
+  color: var(--green);
+}
+
+section {
+  padding: 42px 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.section-title h2 {
+  font-size: 26px;
+  margin-bottom: 5px;
+}
+
+.section-title p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.card {
+  background: linear-gradient(145deg, #102a30, #091b1f);
+  border: 1px solid #8cecf422;
+  border-radius: 18px;
+  padding: 24px;
+  transition: .25s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: #6cebf077;
+}
+
+.about-card {
+  text-align: center;
+}
+
+.card-icon {
+  font-size: 30px;
+  margin-bottom: 5px;
+}
+
+.card h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+}
+
+.server {
+  padding: 25px;
+  border: 1px solid #69e9d044;
+  border-radius: 20px;
+  background: linear-gradient(110deg, #0e3035, #0a2025);
+}
+
+.server h3 {
+  margin-bottom: 5px;
+}
+
+.server p {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.server-ip {
+  direction: ltr;
+  text-align: left;
+  color: var(--ice);
+  font-family: monospace;
+  font-size: 14px;
+  overflow-wrap: anywhere;
+  margin: 12px 0;
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid #6cffb055;
+  color: var(--green);
+  border-radius: 30px;
+  padding: 3px 10px;
+  font-size: 11px;
+  margin: 3px;
+}
+
+.coming {
+  text-align: center;
+  margin-top: 20px;
+  padding: 25px;
+  border: 1px dashed #8cecf455;
+  border-radius: 18px;
+  background: #0a1c20;
+}
+
+.coming strong {
+  display: block;
+  color: var(--green);
+  font-size: 24px;
+}
+
+.coming p {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.community {
+  text-align: center;
+}
+
+footer {
+  margin-top: 35px;
+  padding: 25px 0;
+  border-top: 1px solid #8cecf41b;
+  color: #8fb2b7;
+  font-size: 11px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* ===== Mouse follower effect ===== */
+.follow-glow,
+.follow-flake {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  will-change: transform;
+}
+
+.follow-glow {
+  width: 260px;
+  height: 260px;
+  margin: -130px 0 0 -130px;
+  border-radius: 50%;
+  background: radial-gradient(circle,
+    #9cf6ff33 0%, #35dbe81c 35%, transparent 70%);
+  mix-blend-mode: screen;
+}
+
+.follow-flake {
+  line-height: 1;
+  color: var(--ice);
+  text-shadow: 0 0 10px #35dbe8aa;
+  direction: ltr;
+}
+
+@media (max-width: 720px) {
+  nav {
+    display: none;
+  }
+
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .art {
+    grid-row: 1;
+    min-height: 280px;
+  }
+
+  .ice-orb {
+    width: 230px;
+  }
+
+  .ice-cube {
+    font-size: 80px;
+  }
+
+  .description {
+    margin: auto;
+  }
+
+  .buttons {
+    justify-content: center;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+  }
+
+  .section-title h2 {
+    font-size: 22px;
+  }
+
+  footer {
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (hover: none), (prefers-reduced-motion: reduce) {
+  .follow-glow,
+  .follow-flake {
+    display: none;
+  }
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <a class="logo" href="#home">
+    <div class="logo-icon">❄</div>
+    <div>
+      ICECRAFT
+      <small>SURVIVAL • BEDROCK</small>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#about">درباره ما</a>
+    <a href="#features">امکانات</a>
+    <a href="#server">سرور</a>
+    <a href="#community">کانال بله</a>
+  </nav>
+</header>
+
+<main id="home">
+
+<div class="hero">
+  <div>
+    <div class="label">❄ دنیای یخی، ماجراجویی بی‌پایان</div>
+
+    <h1>ICE<span>CRAFT</span></h1>
+
+    <p class="description">
+      به دنیای آیس‌کرفت خوش اومدی؛ جایی برای ساختن،
+      زنده موندن، کشف کردن و تبدیل شدن به افسانه‌ی
+      دنیای خودت!
+    </p>
+
+    <div class="slogan">
+      «منتظر قهرمان نباش، خودت افسانه شو!»
+    </div>
+
+    <div class="buttons">
+      <a class="btn btn-primary"
+         href="https://ble.ir/IceC_raft"
+         target="_blank" rel="noopener">
+        ❄ ورود به کانال بله
+      </a>
+
+      <a class="btn btn-secondary" href="#server">
+        مشخصات سرور ↓
+      </a>
+    </div>
+  </div>
+
+  <div class="art">
+    <div class="ice-orb">
+      <div class="ice-cube">🧊</div>
+    </div>
+
+    <div class="floating top">✦ ICECRAFT WORLD</div>
+    <div class="floating bottom">❄ SURVIVAL MODE</div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="section-title">
+    <h2>به نام خالق دنیای مکعبی</h2>
+    <p>ماجراجویی تازه‌ات از همین‌جا شروع می‌شود.</p>
+  </div>
+
+  <div class="card about-card">
+    <div class="card-icon">⛏️</div>
+    <h3>حرف ما</h3>
+    <p>
+      در آیس‌کرفت، دنیای خودت رو بساز؛ با دوستات همراه شو،
+      منابع جمع کن و قدم‌به‌قدم قلمروت رو گسترش بده.
+      اینجا هر بازیکن می‌تونه داستان خودش رو بسازه.
+    </p>
+  </div>
+</section>
+
+<section id="features">
+  <div class="section-title">
+    <h2>ویژگی‌های آیس‌کرفت</h2>
+    <p>برای شروع ماجراجویی آماده‌ای؟</p>
+  </div>
+
+  <div class="coming">
+    <strong>به‌زودی</strong>
+    <p>ویژگی‌ها به‌زودی در کانال بله گفته می‌شود.</p>
+  </div>
+</section>
+
+<section id="server">
+  <div class="section-title">
+    <h2>ورود به دنیای آیس‌کرفت</h2>
+    <p>اطلاعات ثبت‌شده‌ی اتصال به سرور</p>
+  </div>
+
+  <div class="server">
+    <h3>🎮 ICECRAFT | SURVIVAL</h3>
+    <p>آدرس سرور ماینکرفت</p>
+
+    <div class="server-ip" style="direction: rtl; text-align: right; font-family: inherit; font-weight: 800;">
+      به‌زودی
+    </div>
+
+    <span class="tag">Bedrock</span>
+    <span class="tag">نسخه: به‌زودی</span>
+    <span class="tag">Survival</span>
+
+    <div class="buttons">
+      <a class="btn btn-primary"
+         href="https://ble.ir/IceC_raft"
+         target="_blank" rel="noopener">
+        کانال رسمی بله ↗
+      </a>
+    </div>
+  </div>
+
+  <div class="coming">
+    <strong>به‌زودی</strong>
+    <p>منتظر خبرها و امکانات تازه‌ی آیس‌کرفت باش!</p>
+  </div>
+</section>
+
+<section id="community">
+  <div class="section-title">
+    <h2>همراه آیس‌کرفت باش</h2>
+    <p>خبرها و اطلاعیه‌ها را از کانال بله دنبال کن.</p>
+  </div>
+
+  <div class="community">
+    <a class="btn btn-primary"
+       href="https://ble.ir/IceC_raft"
+       target="_blank" rel="noopener">
+      ❄ کانال ICECRAFT در بله
+    </a>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <span>© ICECRAFT | SURVIVAL</span>
+  <span>ساخته‌شده با ❄ برای دوست‌داران Minecraft</span>
+</footer>
+
+</div>
+
+<script>
+/* Mouse follower: a soft ice glow + snowflakes that chase the cursor */
+(function () {
+  if (window.matchMedia('(hover: none)').matches ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var mouse = { x: innerWidth / 2, y: innerHeight / 2 };
+  var started = false;
+
+  var glow = document.createElement('div');
+  glow.className = 'follow-glow';
+  document.body.appendChild(glow);
+
+  // each flake: speed (how fast it catches up), size, and a small offset from the cursor
+  var config = [
+    { speed: 0.16, size: 16, ox: 14,  oy: 10 },
+    { speed: 0.12, size: 13, ox: -16, oy: 18 },
+    { speed: 0.09, size: 11, ox: 20,  oy: -14 },
+    { speed: 0.07, size: 9,  ox: -22, oy: -10 },
+    { speed: 0.05, size: 8,  ox: 8,   oy: 28 }
+  ];
+
+  var flakes = config.map(function (c, i) {
+    var el = document.createElement('div');
+    el.className = 'follow-flake';
+    el.textContent = '❄';
+    el.style.fontSize = c.size + 'px';
+    el.style.opacity = String(0.9 - i * 0.12);
+    document.body.appendChild(el);
+    return { el: el, x: mouse.x, y: mouse.y, c: c, rot: 0 };
+  });
+
+  var gx = mouse.x, gy = mouse.y;
+
+  addEventListener('pointermove', function (e) {
+    mouse.x = e.clientX;
+    mouse.y = e.clientY;
+    if (!started) {
+      started = true;
+      gx = mouse.x; gy = mouse.y;
+      flakes.forEach(function (f) { f.x = mouse.x; f.y = mouse.y; });
+    }
+  }, { passive: true });
+
+  function tick() {
+    // glow eases toward the mouse
+    gx += (mouse.x - gx) * 0.12;
+    gy += (mouse.y - gy) * 0.12;
+    glow.style.transform = 'translate(' + gx + 'px,' + gy + 'px)';
+
+    // each flake chases the mouse at its own speed
+    flakes.forEach(function (f) {
+      var tx = mouse.x + f.c.ox;
+      var ty = mouse.y + f.c.oy;
+      var dx = tx - f.x;
+      var dy = ty - f.y;
+      f.x += dx * f.c.speed;
+      f.y += dy * f.c.speed;
+      f.rot += 1.5 + Math.min(Math.hypot(dx, dy) * 0.05, 8);
+      f.el.style.transform =
+        'translate(' + (f.x - f.c.size / 2) + 'px,' + (f.y - f.c.size / 2) + 'px) rotate(' + f.rot + 'deg)';
+    });
+
+    requestAnimationFrame(tick);
+  }
+
+  if (!started) {
+    glow.style.opacity = flakes.forEach ? '1' : '1';
+  }
+  requestAnimationFrame(tick);
+})();
+</script>
+</body>
+</html>
