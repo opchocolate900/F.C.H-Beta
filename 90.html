@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>گفتگوی ᒍᗩᗰᗴ ᗪᗝᔕTᗩᑎ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --mist:#EEF5F3; --paper:#FBFDFC; --ink:#0C2B27; --soft:#4F6B66;
+    --teal:#00B896; --teal-deep:#007F69; --peri:#4C6EF5; --line:#D3E3DF;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{margin:0;font-family:"Vazirmatn",Tahoma,sans-serif;color:var(--ink);background:var(--mist);-webkit-font-smoothing:antialiased}
+  :focus-visible{outline:3px solid var(--peri);outline-offset:2px;border-radius:8px}
+  button,input{font:inherit}
+
+  .app{display:flex;flex-direction:column;height:100dvh;max-width:760px;margin:0 auto;background:var(--paper);border-inline:1px solid var(--line)}
+
+  header{display:flex;align-items:center;gap:12px;padding:14px 18px;background:var(--teal);color:#032a23}
+  header .title{font-family:system-ui,"Segoe UI Symbol",sans-serif;direction:ltr;font-weight:700;font-size:20px;letter-spacing:1px}
+  header .sub{font-size:13px;opacity:.8}
+  header .grow{flex:1;min-width:0}
+  header button{background:rgba(255,255,255,.35);border:0;border-radius:10px;padding:6px 12px;font-size:13px;cursor:pointer;color:#032a23}
+  header button:hover{background:rgba(255,255,255,.55)}
+
+  #log{flex:1;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:var(--mist)}
+  .empty{margin:auto;color:var(--soft);font-size:15px;text-align:center}
+
+  .msg{display:flex;gap:10px;max-width:86%;align-items:flex-end}
+  .msg.me{align-self:flex-start;flex-direction:row-reverse}
+  .av{flex:none;width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font-weight:700;font-size:15px;color:#fff}
+  .bub{background:var(--paper);border:1px solid var(--line);border-radius:16px 16px 16px 4px;padding:8px 14px;min-width:0}
+  .me .bub{background:#DDF6EF;border-color:#BDEBDD;border-radius:16px 16px 4px 16px}
+  .who{display:flex;align-items:center;gap:5px;font-size:13px;font-weight:600;color:var(--teal-deep);margin-bottom:2px;flex-wrap:wrap}
+  .who .role{font-weight:400;color:var(--soft)}
+  .txt{white-space:pre-wrap;word-break:break-word;font-size:16px;line-height:1.8}
+  .time{font-size:11px;color:var(--soft);margin-top:2px;text-align:left}
+  .tick{width:17px;height:17px;flex:none}
+  .creator .bub{border-color:var(--peri);box-shadow:0 0 0 3px rgba(76,110,245,.10)}
+  .creator .who{color:var(--peri)}
+
+  form{display:flex;gap:10px;padding:12px 14px;background:var(--paper);border-top:1px solid var(--line)}
+  form input{flex:1;min-width:0;border:1.5px solid var(--line);border-radius:14px;padding:12px 16px;background:var(--mist);color:var(--ink)}
+  form input:focus{border-color:var(--teal);outline:none}
+  .send{border:0;border-radius:14px;background:var(--teal);color:#032a23;font-weight:600;padding:0 22px;cursor:pointer}
+  .send:hover{background:#00cca7}
+
+  /* name gate */
+  #gate{position:fixed;inset:0;background:rgba(12,43,39,.55);display:grid;place-items:center;padding:20px;z-index:10}
+  .card{background:var(--paper);border-radius:24px;padding:30px;width:min(100%,380px);box-shadow:0 30px 60px -20px rgba(0,0,0,.4)}
+  .card h2{margin:0 0 6px;font-size:24px;font-weight:800}
+  .card p{margin:0 0 18px;color:var(--soft);font-size:15px}
+  .card input{width:100%;border:1.5px solid var(--line);border-radius:14px;padding:13px 16px;background:var(--mist);color:var(--ink);margin-bottom:12px}
+  .card input:focus{border-color:var(--teal);outline:none}
+  .card .go{width:100%;padding:13px;border:0;border-radius:14px;background:var(--ink);color:var(--paper);font-weight:600;cursor:pointer}
+  .card .go:hover{background:var(--teal-deep)}
+  .err{color:#C92A2A;font-size:14px;min-height:22px;margin:0 0 4px}
+
+  .mode{font-size:12px;color:var(--soft);text-align:center;padding:6px;background:var(--paper);border-top:1px solid var(--line)}
+  @media (prefers-reduced-motion:no-preference){ .msg{animation:in .25s ease-out} @keyframes in{from{opacity:0;transform:translateY(6px)}} }
+</style>
+</head>
+<body>
+
+<div class="app">
+  <header>
+    <div class="grow">
+      <div class="title">ᒍᗩᗰᗴ ᗪᗝᔕTᗩᑎ</div>
+      <div class="sub" id="me">گفتگوی گروه</div>
+    </div>
+    <button id="leave" type="button">تغییر نام</button>
+  </header>
+
+  <div id="log" aria-live="polite"><div class="empty">هنوز پیامی نیست. اولین نفر باش 👋</div></div>
+
+  <div class="mode" id="mode"></div>
+
+  <form id="f" autocomplete="off">
+    <input id="in" type="text" placeholder="پیامت رو بنویس..." maxlength="500" aria-label="پیام">
+    <button class="send" type="submit">ارسال</button>
+  </form>
+</div>
+
+<div id="gate">
+  <div class="card">
+    <h2>خوش اومدی 💙</h2>
+    <p>قبل از ورود، یه اسم برای خودت انتخاب کن.</p>
+    <input id="nm" type="text" maxlength="20" placeholder="اسمت" aria-label="اسم">
+    <p class="err" id="err"></p>
+    <button class="go" id="enter" type="button">ورود به گفتگو</button>
+  </div>
+</div>
+
+<script>
+/* ---------- identity rules ---------- */
+const CREATOR_KEY = 'tr';                       // typing this name...
+const CREATOR_NAME = 'Commander Chocolate';     // ...shows this instead
+const CREATOR_ROLE = '(Creator)';
+const RESERVED = ['commander chocolate','فرمانده چاکلت','فرمانده شکلات'];
+
+function resolveUser(raw){
+  const n = raw.trim();
+  if (n.toLowerCase() === CREATOR_KEY) return { name: CREATOR_NAME, role: CREATOR_ROLE, verified: true };
+  if (RESERVED.includes(n.toLowerCase())) return null;
+  return { name: n, role: '', verified: false };
+}
+
+/* ---------- storage: shared if available, else local ---------- */
+const hasShared = typeof window.storage !== 'undefined' && window.storage && window.storage.set;
+const PFX = 'msg:';
+const seen = new Set();
+const local = {
+  async list(){ return Object.keys(localStorage).filter(k => k.startsWith(PFX)); },
+  async get(k){ return localStorage.getItem(k); },
+  async set(k,v){ localStorage.setItem(k,v); }
+};
+const shared = {
+  async list(){ try { const r = await window.storage.list(PFX, true); return (r && r.keys) || []; } catch(e){ return []; } },
+  async get(k){ try { const r = await window.storage.get(k, true); return r ? r.value : null; } catch(e){ return null; } },
+  async set(k,v){ await window.storage.set(k, v, true); }
+};
+const store = hasShared ? shared : local;
+document.getElementById('mode').textContent = hasShared
+  ? 'پیام‌ها بین همه‌ی اعضا مشترکه'
+  : 'حالت آزمایشی: پیام‌ها فقط روی همین دستگاه ذخیره می‌شن';
+
+/* ---------- ui ---------- */
+const log = document.getElementById('log');
+const gate = document.getElementById('gate');
+let user = null;
+const COLORS = ['#4C6EF5','#00B896','#E8590C','#AE3EC9','#1098AD','#D6336C','#5C940D'];
+const tickSVG = '<svg class="tick" viewBox="0 0 24 24" aria-label="حساب رسمی" role="img"><path fill="#4C6EF5" d="M12 1.8l2.6 1.9 3.2-.1 1 3 2.6 1.9-1 3 1 3-2.6 1.9-1 3-3.2-.1L12 22.2l-2.6-1.9-3.2.1-1-3L2.6 15.5l1-3-1-3 2.6-1.9 1-3 3.2.1z"/><path fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" d="M7.8 12.3l3 3 5.4-6"/></svg>';
+
+function colorFor(s){ let h=0; for (const c of s) h=(h*31+c.codePointAt(0))>>>0; return COLORS[h%COLORS.length]; }
+
+function render(m, mine){
+  const empty = log.querySelector('.empty'); if (empty) empty.remove();
+  const wrap = document.createElement('div');
+  wrap.className = 'msg' + (mine ? ' me' : '') + (m.verified ? ' creator' : '');
+
+  const av = document.createElement('div');
+  av.className = 'av'; av.style.background = m.verified ? '#4C6EF5' : colorFor(m.name);
+  av.textContent = [...m.name][0].toUpperCase();
+
+  const bub = document.createElement('div'); bub.className = 'bub';
+  const who = document.createElement('div'); who.className = 'who';
+  const nm = document.createElement('span'); nm.textContent = m.name; who.appendChild(nm);
+  if (m.verified){ const t = document.createElement('span'); t.innerHTML = tickSVG; t.style.display='inline-flex'; who.appendChild(t); }
+  if (m.role){ const r = document.createElement('span'); r.className='role'; r.dir='ltr'; r.textContent = m.role; who.appendChild(r); }
+  const txt = document.createElement('div'); txt.className = 'txt'; txt.textContent = m.text;
+  const tm = document.createElement('div'); tm.className = 'time';
+  tm.textContent = new Date(m.t).toLocaleTimeString('fa-IR',{hour:'2-digit',minute:'2-digit'});
+
+  bub.append(who, txt, tm); wrap.append(av, bub); log.appendChild(wrap);
+}
+function scrollDown(){ log.scrollTop = log.scrollHeight; }
+
+/* ---------- sync ---------- */
+async function sync(){
+  const keys = (await store.list()).filter(k => !seen.has(k)).sort();
+  if (!keys.length) return;
+  const stick = log.scrollHeight - log.scrollTop - log.clientHeight < 80;
+  for (const k of keys){
+    seen.add(k);
+    const raw = await store.get(k); if (!raw) continue;
+    try{
+      const m = JSON.parse(raw);
+      if (m && typeof m.text === 'string' && typeof m.name === 'string') render(m, user && m.uid === user.uid);
+    }catch(e){}
+  }
+  if (stick) scrollDown();
+}
+
+async function send(text){
+  const m = { uid: user.uid, name: user.name, role: user.role, verified: user.verified, text, t: Date.now() };
+  const key = PFX + String(m.t).padStart(15,'0') + '-' + Math.random().toString(36).slice(2,7);
+  await store.set(key, JSON.stringify(m));
+  await sync(); scrollDown();
+}
+
+/* ---------- entry ---------- */
+function enter(){
+  const raw = document.getElementById('nm').value;
+  const err = document.getElementById('err');
+  if (!raw.trim()){ err.textContent = 'اسمت رو بنویس'; return; }
+  const u = resolveUser(raw);
+  if (!u){ err.textContent = 'این اسم رزرو شده، یه اسم دیگه انتخاب کن'; return; }
+  u.uid = localStorage.getItem('chat_uid') || (localStorage.setItem('chat_uid', Math.random().toString(36).slice(2)), localStorage.getItem('chat_uid'));
+  user = u;
+  localStorage.setItem('chat_name', raw.trim());
+  document.getElementById('me').textContent = 'وارد شدی به‌عنوان ' + u.name;
+  gate.style.display = 'none';
+  log.innerHTML = '<div class="empty">هنوز پیامی نیست. اولین نفر باش 👋</div>';
+  seen.clear(); sync().then(scrollDown);
+  document.getElementById('in').focus();
+}
+document.getElementById('enter').addEventListener('click', enter);
+document.getElementById('nm').addEventListener('keydown', e => { if (e.key === 'Enter') enter(); });
+document.getElementById('leave').addEventListener('click', () => { gate.style.display = 'grid'; document.getElementById('nm').focus(); });
+
+document.getElementById('f').addEventListener('submit', e => {
+  e.preventDefault();
+  const i = document.getElementById('in'); const t = i.value.trim();
+  if (!t || !user) return; i.value = ''; send(t);
+});
+
+const saved = localStorage.getItem('chat_name'); if (saved) document.getElementById('nm').value = saved;
+document.getElementById('nm').focus();
+setInterval(() => { if (user) sync(); }, 2000);
+window.addEventListener('storage', () => { if (user) sync(); });
+</script>
+</body>
+</html>
